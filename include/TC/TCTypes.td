@@ -13,6 +13,12 @@ class TCType<string name, string typeMnemonic, list<Trait> traits = []>
 def TC_Tensor : TCType<"TC_Tensor", "tensor"> {
   let summary = "A tensor type in the TC dialect.";
   let description = "Represents a tensor type in the TC dialect.";
+  let parameters = (ins
+    ArrayRefParameter<"int64_t">:$shape,
+    "Type":$elementType,
+    "Attribute":$encoding
+  );
+  let hasCustomAssemblyFormat = 1;
 }
 
 
