@@ -14,6 +14,4 @@ int main(int argc, char *argv[]) {
                   mlir::func::FuncDialect>();
   return mlir::asMainReturnCode(
       mlir::MlirOptMain(argc, argv, "Tensor Compiler Optimizer", registry));
-
-  return 0;
 }

@@ -15,10 +15,10 @@ def TC_Tensor : TCType<"TC_Tensor", "tensor"> {
   let description = "Represents a tensor type in the TC dialect.";
   let parameters = (ins
     ArrayRefParameter<"int64_t">:$shape,
-    "Type":$elementType,
-    "Attribute":$encoding
+    "Type":$elementType
   );
-  let hasCustomAssemblyFormat = 1;
+
+  let assemblyFormat = "`<` $shape `,` $elementType `>`";
 }
 
 

@@ -18,7 +18,6 @@ LogicalResult MatMulOp::verify() {
   if (lhsShape[1] != rhsShape[0]) {
     return emitOpError(
         "MatMulOp requires shape compatibility: (M,K) x (K,N) -> (M,N)");
-
-    return success();
   }
+  return success();
 }
