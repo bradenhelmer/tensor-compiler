@@ -1,6 +1,6 @@
 #include "TC/TCDialect.h"
-#include "TC/TCTypes.h"
 #include "TC/TCOps.h"
+#include "TC/TCTypes.h"
 
 using namespace mlir;
 using namespace mlir::tc;

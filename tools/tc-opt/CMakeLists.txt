@@ -1,4 +1,4 @@
-set(LIBS MLIROptLib MLIRTC)
+set(LIBS MLIRArithDialect MLIRFuncDialect MLIROptLib MLIRTC)
 add_llvm_executable(tc-opt tc-opt.cpp)
 
 llvm_update_compile_flags(tc-opt)

@@ -1,4 +1,8 @@
 #include "TC/TCTypes.h"
+#include "TC/TCDialect.h"
+#include "mlir/IR/Builders.h"
+#include "mlir/IR/DialectImplementation.h"
+#include "llvm/ADT/TypeSwitch.h"
 
 using namespace mlir::tc;
 
@@ -11,4 +15,3 @@ void TCDialect::registerTypes() {
 #include "TC/TCOpsTypes.cpp.inc"
       >();
 }
-

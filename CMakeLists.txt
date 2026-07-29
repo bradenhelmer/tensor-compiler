@@ -21,3 +21,23 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 add_subdirectory(include)
 add_subdirectory(lib)
 add_subdirectory(tools)
+
+file(GLOB_RECURSE TC_CXX_SRCS
+     ${CMAKE_SOURCE_DIR}/include/TC/*.h
+     ${CMAKE_SOURCE_DIR}/include/TC/*.cpp
+     ${CMAKE_SOURCE_DIR}/lib/TC/*.h
+     ${CMAKE_SOURCE_DIR}/lib/TC/*.cpp
+     ${CMAKE_SOURCE_DIR}/tools/*.h
+     ${CMAKE_SOURCE_DIR}/tools/*.cpp)
+
+add_custom_target(format
+    COMMAND clang-format -i -style=file ${TC_CXX_SRCS}
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    COMMENT "Formatting C++ sources with clang-format"
+)
+
+add_custom_target(check-format
+    COMMAND clang-format --dry-run --Werror -style=file ${TC_CXX_SRCS}
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    COMMENT "Checking C++ sources comply with clang-format"
+)
