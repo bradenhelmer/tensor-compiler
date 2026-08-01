@@ -14,6 +14,7 @@ def TC_Dialect : Dialect {
     let extraClassDeclaration = [{
         void registerTypes();
     }];
+    let useDefaultTypePrinterParser = 1;
 }
 
 class TC_Op<string mnemonic, list<Trait> traits = []> : Op<TC_Dialect, mnemonic, traits>;

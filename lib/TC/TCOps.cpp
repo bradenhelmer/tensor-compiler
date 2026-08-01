@@ -3,13 +3,20 @@
 #define GET_OP_CLASSES
 #include "TC/TCOps.cpp.inc"
 
+using namespace llvm;
 using namespace mlir;
 using namespace mlir::tc;
 
+void mlir::tc::TensorEmptyOp::build(OpBuilder &builder, OperationState &state,
+                                    ArrayRef<int64_t> shape, Type elementType) {
+  auto type = TC_TensorType::get(builder.getContext(), shape, elementType);
+  return build(builder, state, type);
+}
+
 LogicalResult MatMulOp::verify() {
 
-  auto lhsShape = getLhs().getType().getShape();
-  auto rhsShape = getRhs().getType().getShape();
+  auto lhsShape = getA().getType().getShape();
+  auto rhsShape = getB().getType().getShape();
 
   if (lhsShape.size() != 2 || rhsShape.size() != 2) {
     return emitOpError("MatMulOp requires two-dimensional tensors");
